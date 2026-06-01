@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - prod
+  workflow_dispatch:
   
 jobs:
   deploy-app:
@@ -15,8 +16,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
+      # 先全局安装 pnpm，再配置缓存
       - name: Install pnpm
         run: |
           npm install -g pnpm@10
